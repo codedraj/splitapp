@@ -1,0 +1,13 @@
+input {
+  display: block;
+  width: 90%;
+}
+select,
+button {
+  display: block;
+  width: 90%;
+}
+
+* {
+  border: none;
+}
