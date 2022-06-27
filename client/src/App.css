@@ -24,6 +24,6 @@
   height: 100vh;
 }
 
-#left-top {
-  background-color: black;
+* {
+  background-color: #9cc0e7;
 }

@@ -9,6 +9,7 @@ const updateTask = async (_id, data) => {
   const query = {
     _id,
   };
+  console.log(_id);
   const task = await Task.findOneAndUpdate(query, data, {
     new: true,
   });

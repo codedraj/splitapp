@@ -1,11 +1,11 @@
-input {
-  display: block;
-  width: 90%;
-}
+input,
 select,
 button {
   display: block;
   width: 90%;
+  height: 5vh;
+  background-color: whitesmoke;
+  border-radius: 1.25vh;
 }
 
 * {

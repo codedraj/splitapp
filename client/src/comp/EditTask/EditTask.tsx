@@ -1,17 +1,28 @@
 import React, { useContext, useState } from "react";
+import { ArrayBindingOrAssignmentPattern } from "typescript";
 import { AppContext } from "../../App";
+import { Args } from "../AddTask/addTaskAPI";
 import getAllTasksApi from "../AllTasks/getAllTasksAPI";
-import "./addtask.css";
-import addTaskAPI, { Args } from "./addTaskAPI";
+import "./edittask.css";
+import editTaskAPI, { Args as ArgsState } from "./editTaskAPI";
 
-type Props = {};
+type Props = {
+  task: {
+    title: string;
+    description: string;
+    status: string;
+    userName: string;
+    _id: string;
+  };
+};
 
-const AddTask = (props: Props) => {
+const EditTask = (props: Props) => {
+  const { task } = props;
   const [inputs, setInputs] = useState<Args>({
-    title: "",
-    description: "",
-    status: "",
-    userName: "",
+    title: task.title,
+    description: task.description,
+    status: task.status,
+    userName: task.userName,
   });
 
   const {
@@ -31,12 +42,13 @@ const AddTask = (props: Props) => {
     }));
   };
 
-  const handleSubmit = async (data: Args) => {
-    const responseData = await addTaskAPI(data);
+  const handleSubmit = async (data: ArgsState) => {
+    const responseData = await editTaskAPI(data);
     if (responseData.responseBool) {
       setCounter((prev: number) => prev + 1);
       refetch();
     }
+    refetch();
   };
 
   return (
@@ -49,6 +61,7 @@ const AddTask = (props: Props) => {
             description: inputs.description,
             status: inputs.status,
             userName: inputs.userName,
+            _id: task._id,
           };
           await handleSubmit(args);
         }}
@@ -91,4 +104,4 @@ const AddTask = (props: Props) => {
   );
 };
 
-export default AddTask;
+export default EditTask;

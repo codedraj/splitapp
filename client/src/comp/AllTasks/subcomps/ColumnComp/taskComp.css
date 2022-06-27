@@ -1,0 +1,10 @@
+.task {
+  background-color: whitesmoke;
+  font-size: 2vw;
+}
+
+#container {
+  border: none;
+  border-radius: 1vw;
+  box-shadow: white 0px 1.25px 3.25px;
+}

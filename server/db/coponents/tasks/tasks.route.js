@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   res.json("Task Router Working");
 });
 
-router.get("/getAllTasks", async () => {
+router.get("/getAllTasks", async (req, res) => {
   try {
     const results = await controller.getAllTasks();
     res.json({ results, responseBool: true });
@@ -36,11 +36,12 @@ router.post("/newTask", async (req, res) => {
   }
 });
 
-router.put("/updateTask/:id", async (req, res) => {
+router.put("/updateTask/", async (req, res) => {
   try {
-    const { data } = req.body;
-    const { _id } = req.params;
+    const { data, _id } = req.body;
+    console.log(_id);
     const results = await controller.updateTask(_id, data);
+    console.log(results);
     res.json({ results, responseBool: true });
   } catch (error) {
     res.json({ results: error.message, responseBool: !true });
